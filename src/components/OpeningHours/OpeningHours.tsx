@@ -6,8 +6,22 @@ import { getOpenStatus } from "@/lib/openingHours";
 import { TrackedLink } from "@/components/TrackedLink";
 
 const subscribeNoop = () => () => {};
-const getSnapshot = () => getOpenStatus(barberShop.openingHours);
 const getServerSnapshot = () => null;
+
+let cachedStatus: ReturnType<typeof getOpenStatus> | null = null;
+
+function getSnapshot() {
+  const next = getOpenStatus(barberShop.openingHours);
+  if (
+    !cachedStatus ||
+    cachedStatus.isOpen !== next.isOpen ||
+    cachedStatus.statusText !== next.statusText ||
+    cachedStatus.todayIndex !== next.todayIndex
+  ) {
+    cachedStatus = next;
+  }
+  return cachedStatus;
+}
 
 export function OpeningHours() {
   const status = useSyncExternalStore(subscribeNoop, getSnapshot, getServerSnapshot);

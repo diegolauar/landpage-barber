@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# STROM BARBEARIA — Landing Page
 
-## Getting Started
+Landing page profissional para a STROM BARBEARIA, construída com Next.js (App Router), TypeScript e Tailwind CSS v4.
 
-First, run the development server:
+> Nota: todos os dados (endereço, telefone, preços, barbeiros, depoimentos) são **fictícios** e devem ser substituídos pelos dados reais antes da publicação. Veja [CLAUDE.md](./CLAUDE.md) para o briefing completo.
+
+## Rodando localmente
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Os scripts `dev` e `build` usam `--webpack` porque o Turbopack (padrão no Next.js 16) ainda falha ao carregar `next/font/google` com múltiplos pesos de fonte.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estrutura
 
-## Learn More
+```text
+src/
+├── app/            # App Router: layout, page, robots, sitemap
+├── components/     # Um componente por seção da landing page
+├── config/         # Dados centrais do negócio (nome, endereço, serviços, barbeiros...)
+├── lib/            # WhatsApp, SEO, Schema.org, Analytics, horário de funcionamento
+└── types/          # Tipos TypeScript compartilhados
+```
 
-To learn more about Next.js, take a look at the following resources:
+`design-reference/` guarda o design original (protótipo HTML/CSS) usado como base visual — não faz parte do app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Antes de publicar
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ver checklist completo em [CLAUDE.md](./CLAUDE.md), seção 39. Principais pontos:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Substituir dados fictícios (endereço, telefone, preços, barbeiros, depoimentos) pelos reais
+- Adicionar fotos reais em `public/images/` (fachada, barbeiros, cortes, ambiente)
+- Gerar uma imagem Open Graph real em `public/images/barbershop/og-image.jpg`
+- Configurar domínio + Vercel + Google Search Console + Google Business Profile

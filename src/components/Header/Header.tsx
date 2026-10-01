@@ -47,7 +47,7 @@ export function Header() {
           </span>
         </a>
 
-        <nav aria-label="Principal" className="hidden md:flex gap-7.5">
+        <nav aria-label="Principal" className="hidden lg:flex gap-7.5">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -75,7 +75,7 @@ export function Header() {
             onClick={() => setMenuOpen((open) => !open)}
             aria-label="Abrir menu"
             aria-expanded={menuOpen}
-            className="md:hidden w-11 h-11 border border-border-strong text-foreground text-lg font-mono"
+            className="lg:hidden w-11 h-11 border border-border-strong text-foreground text-lg font-mono"
           >
             {menuOpen ? "✕" : "☰"}
           </button>
@@ -85,7 +85,7 @@ export function Header() {
       {menuOpen && (
         <nav
           aria-label="Menu mobile"
-          className="md:hidden border-t border-border bg-background px-5 pt-3 pb-7 flex flex-col"
+          className="lg:hidden border-t border-border bg-background px-5 pt-3 pb-7 flex flex-col"
         >
           {navItems.map((item, i) => (
             <a

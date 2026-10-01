@@ -24,7 +24,7 @@ export function Location() {
               src={mapsEmbedUrl}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full min-h-[340px] border-0 block grayscale invert-[0.9] contrast-[0.9]"
+              className="w-full h-full min-h-[340px] border-0 block"
             />
           </div>
           <div className="flex flex-wrap justify-between items-end gap-5">
